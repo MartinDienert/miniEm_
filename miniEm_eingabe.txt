@@ -1,0 +1,6 @@
+loglevel:5
+logdatei:5
+messwerte:1
+Autoaid_modus:1
+Kueche_5l_modus:1
+Batteriepack_modus:1

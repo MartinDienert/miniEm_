@@ -1,0 +1,221 @@
+{
+	loglevel:5,
+    logDatei:5,
+    logMessw:1,
+	zykluszeit:5000,
+	eingabedatei:"miniEm_eingabe.txt",
+	ausgabedatei:"miniEm_ausgabe.txt",
+    logdateiname:"miniEm_log.txt",
+	mwdateiname:"miniEm_messwerte.txt",
+	berechnungen:{
+		leistung:"- zaehler 1"
+	},
+	zaehlerErzeugung:{
+		name:"froniusWr",
+		type:"modbustcp",
+		daten:{
+			ip:"192.168.178.32",
+			port:502,
+			id:1,
+			regP:500,
+			faktorP:1
+		}
+	},
+	zaehlerNetz:{
+		name:"elgrisNetz",
+		type:"modbustcp",
+		daten:{
+			ip:"192.168.178.31",
+			port:502,
+			id:1,
+			regU:40076,
+			faktorU:0.01,
+			regP:40087,
+			faktorP:1
+		}
+	},
+	XXzaehlerNetz:{
+		name:"testNetz2",
+		type:"test",
+		daten:{
+			leistung:[ 1000,-1000,  1000,  500,    0,  0];
+			zeiten: [     0,   40,   60,   90,  120,480];
+		}
+	},
+	zaehler_1:{
+		name:"Heizung",
+		type:"http",
+		daten:{
+			ip:"192.168.178.51",
+			port:80,
+			timeout:500,
+			messwerte:{
+				request:"GET",
+				resource:"/cm?cmnd=status%208",
+				leistung1:"StatusSNS{ENERGY{Power",
+			},
+		}
+	},
+	XXXwallbox:{
+		name:"Autoaid",
+		startleistung:1400,
+		stopleistung:100,
+        stopbezug:10,
+		offsetleistung:50,
+        hystereseleistung:50,
+		strom:[8000,10000,13000,16000],
+		leistung:[1300,1900,2600,3600],
+		startzeit: 60,
+		pluszeit: 5,
+		minuszeit: 5,
+        startwartezeit: 10,
+        stopwartezeit: 30,
+        stromwartezeit: 5,
+        wartetimeout: 120,
+		type:"http",
+		daten:{
+			ip:"192.168.178.40",
+			port:80,
+            timeout:1000,
+			status:{
+				request:"GET",
+				resource:"/evse/state",
+				status:"vehicle_state",
+				strom:"allowed_charging_current"
+			},
+			ladenStart:{
+				request:"PUT",
+				resource:"/evse/start_charging",
+				inhalt:"null"
+			},
+			ladenStop:{
+				request:"PUT",
+				resource:"/evse/stop_charging",
+				inhalt:"null"
+			},
+			ladeStrom:{
+				request:"PUT",
+				resource:"/evse/current_limit",
+				inhalt:"{current:%i}"
+			}
+		}
+	},
+	XXwallbox:{
+		name:"Test",
+		startleistung:1400,
+		stopleistung:100,
+        stopbezug:10,
+		offsetleistung:50,
+        hystereseleistung:50,
+		strom:[8000,10000,13000,16000],
+		leistung:[1300,1900,2600,3400],
+		startzeit: 10,
+		stopzeit: 40,
+		pluszeit: 0,
+		minuszeit: 0,
+        startwartezeit: 10,
+        stopwartezeit: 10,
+        stromwartezeit: 4,
+        wartetimeout: 120,
+		type:"test",
+		daten:{
+		}
+	},
+	xxverbraucher_1:{
+		name:"Testboiler",
+		startleistung:850,
+        stopbezug:5,
+		offsetleistung:50,
+        hystereseleistung:50,
+        stufe:[1, 2],
+		leistung:[750,1500],
+		type:"test",
+		daten:{
+		}
+	},
+	XXXverbraucher_1:{
+		name:"Kueche_5l",
+		startleistung:850,
+        stopbezug:5,
+		offsetleistung:50,
+        hystereseleistung:50,
+        stufe:[1, 2],
+		leistung:[750,1500],
+		type:"http",
+		daten:{
+			ip:"192.168.178.42",
+			port:80,
+            timeout:1000,
+			status:{
+				request:"GET",
+				resource:"/cm?cmnd=status%2011",
+				status:"stufe",
+			},
+			messwerte:{
+				request:"GET",
+				resource:"/cm?cmnd=status%208",
+				leistung1:"StatusSNS{ENERGY{Power[0",
+                leistung2:"StatusSNS{ENERGY{Power[1",
+			},
+            ein:{
+                relais:[1],
+			},
+            aus:{
+                relais:[],
+			},
+            stufen:{
+                relais:[[1], [2]],
+                rel1:{
+                    request:"GET",
+                    status:"StatusSTS{POWER1",
+                    resource_aus:"/cm?cmnd=power1%200",
+                    resource_ein:"/cm?cmnd=power1%201",
+                    inhalt:"null"
+                },
+                rel2:{
+                    request:"GET",
+                    status:"StatusSTS{POWER2",
+                    resource_aus:"/cm?cmnd=power2%200",
+                    resource_ein:"/cm?cmnd=power2%201",
+                    inhalt:"null"
+                }
+            }
+		}
+	},
+	XXXXverbraucher_1:{
+		name:"Batteriepack",
+		startleistung:250,
+        stopbezug:0,
+		offsetleistung:20,
+        hystereseleistung:30,
+        stufe:[1],
+		leistung:[200],
+        zeiten:[[12, 00, 14, 10, 0], [22, 00, 22, 10, 3]],
+		type:"http",
+		daten:{
+			ip:"192.168.178.42",
+			port:80,
+            timeout:1000,
+			status:{
+				request:"GET",
+				resource:"/cm?cmnd=status%2011",
+				status:"StatusSTS{POWER",
+			},
+			messwerte:{
+				request:"GET",
+				resource:"/cm?cmnd=status%208",
+				leistung1:"StatusSNS{ENERGY{Power",
+			},
+            ein:{
+				request:"GET",
+				resource:"/cm?cmnd=power1%201",
+				inhalt:"null"
+			},
+            aus:{
+				request:"GET",
+				resource:"/cm?cmnd=power1%200",
+				inhalt:"null"
+			}
+		}
+	}
+}

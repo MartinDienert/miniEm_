@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: . ./lib/json-20211205.jar ./lib/jlibmodbus.jar ./lib/jssc.jar
+Main-Class: Main
