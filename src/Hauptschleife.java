@@ -1,7 +1,9 @@
-import java.util.*;
-import java.text.*;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import org.json.*;
+import java.util.Date;
+import java.util.TimerTask;
+
+import org.json.JSONObject;
 
 class Hauptschleife extends TimerTask{
 	long l = 0;

@@ -1,4 +1,4 @@
-import org.json.*;
+import org.json.JSONObject;
 
 abstract class Zaehler implements Berechnen{
 	String name;

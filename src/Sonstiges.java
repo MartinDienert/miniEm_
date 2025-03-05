@@ -1,5 +1,9 @@
-import java.nio.file.*;
-import org.json.*;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Sonstiges{
 	public static String eingabedatei;

@@ -1,4 +1,4 @@
-import org.json.*;
+import org.json.JSONObject;
 
 public class WallboxHttp extends Wallbox{
 	JSONObject daten;

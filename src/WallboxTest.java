@@ -1,5 +1,7 @@
-import java.util.*;
-import org.json.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.json.JSONObject;
 
 public class WallboxTest extends Wallbox{
 	int[] status = {1,0};

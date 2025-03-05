@@ -1,6 +1,8 @@
-import java.util.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
-import java.nio.file.*;
+import java.util.Date;
 
 public class Log{
 	static int loglevel = 0;

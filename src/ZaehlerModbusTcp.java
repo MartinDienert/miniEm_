@@ -1,5 +1,6 @@
-import java.util.*;
-import org.json.*;
+import java.util.Arrays;
+
+import org.json.JSONObject;
 
 public class ZaehlerModbusTcp extends Zaehler{
 	ModbusTCP mb;

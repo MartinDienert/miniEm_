@@ -1,5 +1,6 @@
-import java.text.*;
-import org.json.*;
+import java.text.DecimalFormat;
+
+import org.json.JSONObject;
 
 abstract class Wallbox extends Verbraucher{
     int zykluszeit;

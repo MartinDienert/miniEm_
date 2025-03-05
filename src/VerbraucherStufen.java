@@ -1,5 +1,6 @@
-import java.text.*;
-import org.json.*;
+import java.text.DecimalFormat;
+
+import org.json.JSONObject;
 
 abstract class VerbraucherStufen extends Verbraucher{
     int zykluszeit;

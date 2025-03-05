@@ -1,5 +1,6 @@
-import org.json.*;
 import java.util.Random;
+
+import org.json.JSONObject;
 
 public class ZaehlerTest extends Zaehler{
 	int zyklus;
